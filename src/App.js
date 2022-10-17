@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { GlobalStyle } from "./styles/global.js";
 
-function App() {
+import { Routes, Route } from "react-router-dom";
+
+import { Home } from "./components/Home";
+import { Upload } from "./components/Upload";
+import { Report } from "./components/Report/index.jsx";
+import { Policy } from "./components/Policy/index.jsx";
+
+import { StatusProvider } from "./providers/status";
+
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <StatusProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/report" element={<Report />} />
+        <Route path="/policy" element={<Policy />} />
+      </Routes>
+      </StatusProvider>
+    </>
   );
 }
-
-export default App;
