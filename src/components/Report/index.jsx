@@ -15,9 +15,9 @@ export const Report = () => {
       <NavBar />
 
       <StyledPaper elevation={6}>
-        <Table>
-          <h1>Relatórios</h1>
+        <h1>Relatórios</h1>
 
+        <Table>
           <Row>
             <th>Data</th>
             <th>Open</th>

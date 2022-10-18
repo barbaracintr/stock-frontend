@@ -9,18 +9,21 @@ import { Policy } from "./components/Policy/index.jsx";
 
 import { StatusProvider } from "./providers/status";
 
+import { ToastContainer } from "react-toastify";
+
 export function App() {
   return (
     <>
       <GlobalStyle />
       <StatusProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/report" element={<Report />} />
-        <Route path="/policy" element={<Policy />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/report" element={<Report />} />
+          <Route path="/policy" element={<Policy />} />
+        </Routes>
       </StatusProvider>
+      <ToastContainer />
     </>
   );
 }

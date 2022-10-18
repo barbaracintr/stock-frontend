@@ -1,5 +1,4 @@
 import { Box, Form, StyledPaper } from "./styles";
-
 import { Button } from "@mui/material";
 
 import { NavBar } from "../NavBar";
@@ -8,8 +7,13 @@ import { useRef } from "react";
 
 import { api } from "../../data";
 
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Upload = () => {
+
   const inputEl = useRef();
+
   const onButtonClick = (e) => {
     e.preventDefault();
 
@@ -42,36 +46,27 @@ export const Upload = () => {
         elem.splice(0, 1, dateEn);
       });
 
-      const dataObj = array4.map((elem) => ({
-        data: elem[0],
-        open: elem[1],
-        high: elem[2],
-        low: elem[3],
-        close: elem[4],
-        volume: elem[5],
-      }));
+      const stocks = {
+        data: array4
+      };
 
-      dataObj.forEach((elem) => {
-        const dataJson = JSON.stringify(elem);
-        setData(dataJson);
-      });
-
+      setData(stocks);
       function setData(dataJson) {
         api
           .post("/stocks", {
             dataJson,
           })
           .then((response) => console.log(response))
-          .catch((err) => console.log(err));
-      }
-    };
+          .then((response) => toast.success("Dados enviados com sucesso"))
+          .catch((err) => toast.error("Erro ao enviar os dados"));
+        }
+  }
 
     reader.readAsText(file);
   };
 
   return (
     <Box>
-
       <NavBar />
 
       <StyledPaper elevation={6}>

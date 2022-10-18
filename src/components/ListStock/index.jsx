@@ -2,15 +2,15 @@ import { TableRow } from "./styles"
 
 export const ListStock = ({ value }) => {
   const date = new Date(Date.parse(value.stock_date));
-  const result = date.getDay() + '/'+ date.getMonth() + '/'+ date.getFullYear();
+  const resultDate = date.getDay() + '/'+ date.getMonth() + '/'+ date.getFullYear();
   return (
     <TableRow>
-      <td>{result}</td>
-      <td>{value.stock_open}</td>
-      <td>{value.stock_high}</td>
-      <td>{value.stock_low}</td>
-      <td>{value.stock_close}</td>
-      <td>{value.stock_volume}</td>
+      <td>{resultDate}</td>
+      <td>{value.stock_open.toFixed(2)}</td>
+      <td>{value.stock_high.toFixed(2)}</td>
+      <td>{value.stock_low.toFixed(2)}</td>
+      <td>{value.stock_close.toFixed(2)}</td>
+      <td>{value.stock_volume.toFixed(3)}</td>
       <td>{value.stock_status}</td>
     </TableRow>
   );

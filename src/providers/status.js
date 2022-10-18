@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
+
 import { api } from "../data";
 
 export const StatusContext = createContext({});
 
 export const StatusProvider = ({ children }) => {
-  const [stocks, setStocks] = useState([]);
+  const [ stocks, setStocks ] = useState([]);
 
   useEffect(() => {
     api
@@ -23,7 +24,7 @@ export const StatusProvider = ({ children }) => {
       } else if (elem.stock_volume > b && elem.stock_volume < a) setStocks([...stocks], (elem.stock_status = "Bom"));
     });
   }
-
+  
   return (
     <StatusContext.Provider value={{ stocks, setStocks, status }}>
       {children}

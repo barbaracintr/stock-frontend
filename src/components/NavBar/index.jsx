@@ -13,7 +13,7 @@ export const NavBar = () => {
   const [ optionsMenu, setOptionsMenu ] = useState([
     { name: "Upload do Arquivo", src: "upload", icon: upload },
     { name: "Relatórios", src: "report", icon: notealt },
-    { name: "Política", src: "policy", icon: policy },
+    { name: "Políticas", src: "policy", icon: policy },
   ]);
 
   return (
